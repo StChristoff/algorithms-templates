@@ -1,8 +1,13 @@
 from typing import List, Tuple, Optional
 
 def two_sum(arr: List[int], target_sum: int) -> Optional[Tuple[int, int]]:
-    # Здесь реализация вашего решения
-    pass
+    for i in range(0, len(arr)):
+        print(f'-i={i},arr[i]={arr[i]}')
+        for j in range(i+1, len(arr)):
+            print(f'--j={j},arr[j]={arr[j]}')
+            if arr[i]+arr[j] == target_sum:
+                return (str(arr[i])+' '+str(arr[j]))
+    return None
 
 def read_input() -> Tuple[List[int], int]:
     n = int(input())

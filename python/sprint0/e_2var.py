@@ -1,18 +1,14 @@
 from typing import List, Tuple, Optional
 
 def two_sum(arr: List[int], target_sum: int) -> Optional[Tuple[int, int]]:
-    arr.sort()
+    previous = set()
 
-    left = 0
-    right = len(arr) - 1
-    while left < right:
-        current_sum = arr[left] + arr[right]
-        if current_sum == target_sum:
-            return arr[left], arr[right]
-        if current_sum < target_sum:
-            left += 1
+    for A in arr:
+        Y = target_sum - A
+        if Y in previous:
+            return A, Y
         else:
-            right -= 1
+            previous.add(A)
     return None
 
 def read_input() -> Tuple[List[int], int]:

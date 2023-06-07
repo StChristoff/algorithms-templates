@@ -2,17 +2,27 @@ from typing import List
 
 def get_weather_randomness(temperatures: List[int]) -> int:
     count = 0
-    if len(temperatures) == 1:
+    num_days = len(temperatures)
+    if num_days == 1:
+        # print(f'--num_days == 1')
         return 1
-    if (abs(temperatures[len(temperatures)-2])
-        < abs(temperatures[len(temperatures)-1])):
+    if (abs(temperatures[num_days-1])
+        > abs(temperatures[num_days-2])):
+        # print(f'--i[max]={temperatures[num_days-1]}')
+        # print(f'--i[max]-1={temperatures[num_days-2]}')
         count += 1
-    if len(temperatures) == 2:
+        # print(f'--i[max]>i[max]-1, count={count}')
+    if num_days == 2:
+        # print(f'--num_days == 2, count={count}')
         return count
-    for i in range(1, len(temperatures)-2):
-        if (abs(temperatures[i]) > abs(temperatures[i-1])
-            and abs(temperatures[i]) > abs(temperatures[i+1])):
+    if abs(temperatures[0]) > abs(temperatures[1]):
+        count +=1
+        # print(f'--i[1]>i[0], count={count}')
+    for i in range(1, num_days-2):
+        if abs(temperatures[i-1]) < abs(temperatures[i]) > abs(temperatures[i+1]):
             count += 1
+            # print(f'--i[i-1]={temperatures[i-1]} < i[i]={temperatures[i]} > i[i+1]={temperatures[i+1]}')
+            # print(f'--Условие выполнилось: count={count}')
     return count
 
 def read_input() -> List[int]:

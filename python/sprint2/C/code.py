@@ -10,10 +10,22 @@ if LOCAL:
             self.next_item = next_item
 
 
-def solution(node, idx):
-    # Your code
-    # ヽ(´▽`)/
-    pass
+def get_node_by_index(node, index):
+        while index:
+                node = node.next
+                index -= 1
+        return node
+
+def solution(head, idx):
+    if idx == 0:
+            new_head = head.next
+            del(head)
+            return new_head
+    previous_node = get_node_by_index(node, idx-1)
+    node = previous_node.next
+    previous_node.next = node.next
+    del(node)
+    return head
 
 def test():
     node3 = Node("node3", None)

@@ -1,0 +1,22 @@
+def bubble(n, array, idx):
+    flag = False
+    while idx < n - 1:
+        if array[idx] > array[idx + 1]:
+            item = array[idx]
+            array[idx] = array[idx + 1]
+            array[idx + 1] = item
+            flag = True
+        idx += 1
+    if flag:
+        print(*array)
+        bubble(n, array, 0)
+    return flag
+
+def int_input():
+    n = int(input())
+    array = [int(i) for i in input().strip().split()]
+    return n, array
+
+n, array = int_input()
+if not bubble(n, array, 0):
+    print(*array)

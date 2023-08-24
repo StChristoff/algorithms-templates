@@ -25,16 +25,16 @@ ahpc
         False
 """
 
+"""
+Решение с рекурсией без сортировки:
 
 def subseq(s, t):
-    while len(s) > 1 or len(t) > 1:
-        flag = False
-        for i in range(len(t)):
-            if s[0] == t[i]:
-                flag = subseq(s[1:], t[i+1:])
-        return flag
-    if s[0] == t[i]: 
-        return flag 
+    for i in range(len(t)):
+        if s[0] == t[i]:
+            if len(s) > 1:
+                return subseq(s[1:], t[i+1:])
+            return True
+    return False
 
 
 def input_seq():
@@ -42,4 +42,7 @@ def input_seq():
     t = input()
     return s, t
 
-print(subseq())
+
+print(subseq(*input_seq()))
+"""
+
